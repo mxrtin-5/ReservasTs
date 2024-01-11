@@ -1,0 +1,8 @@
+.cardContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Espaciado vertical entre las Cards */
+    row-gap: 2em;
+    max-width: 800px; /* O ajusta según el ancho deseado */
+    margin: auto; /* Centra el contenedor */
+}

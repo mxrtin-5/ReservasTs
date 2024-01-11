@@ -1,0 +1,28 @@
+.navbar{
+    display: flex;
+    background-color: rgb(48, 48, 48);
+    justify-content: space-between;
+    align-items: center;
+    height: 12vh;
+}
+
+.titulo{
+    font-size: 2rem;
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.divP{
+    display: flex;
+    gap: 10px;
+    margin-right: 2rem;
+    font-size: 20px;
+    color: white;
+}
+
+.link{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
