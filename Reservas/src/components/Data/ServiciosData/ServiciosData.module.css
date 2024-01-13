@@ -1,0 +1,70 @@
+.servicioCard {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: rgb(41, 41, 41);
+    color: white;
+    border-radius: 20px;
+}
+
+.servicioCard input {
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 50%;
+}
+
+.servicioCard button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.servicioCard button:hover {
+    background-color: #45a049;
+}
+
+
+.serviciosContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.servicioCard {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    width: calc(33.3333% - 20px); /* Ajusta el ancho según tu diseño (en este caso, tres tarjetas por fila) */
+    box-sizing: border-box;
+}
+
+.servicioCard h4 {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.servicioCard p {
+    margin-bottom: 5px;
+}
+
+.servicioForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.serviciosContainer{
+    width: 900px;
+}
