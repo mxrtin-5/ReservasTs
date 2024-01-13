@@ -187,3 +187,47 @@ const Home = () => {
 }
 
 export default Home;
+
+/* 
+//!asi debe quedar con un fetch a la db
+import { Container, Grid } from '@mui/material';
+import ServicioCard from '../../components/ServicioCard/ServicioCard';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react'; // Importa useState y useEffect
+import styles from './Home.module.css';
+
+const Home = () => {
+    const navigate = useNavigate();
+    const [servicios, setServicios] = useState<any[]>([]);
+
+    useEffect(() => {
+        // Aquí debes realizar la lógica para obtener los servicios desde la base de datos
+        // Por ahora, solo utilizo un array vacío como ejemplo
+        // Reemplaza esta lógica con la llamada real a tu base de datos
+        setServicios([]);
+    }, []); // La dependencia vacía asegura que useEffect se ejecute solo una vez al montar el componente
+
+    const handleServiceSelect = (titulo: string) => {
+        navigate(`/reservas/${encodeURIComponent(titulo)}`);
+    };
+
+    return (
+        <div className={styles.cardContainer}>
+            <h1>Página de inicio</h1>
+            <Container>
+                <Grid container spacing={3}>
+                    {servicios.map((servicio) => (
+                        <ServicioCard
+                            key={servicio.id}
+                            servicio={servicio}
+                            onSelect={handleServiceSelect}
+                        />
+                    ))}
+                </Grid>
+            </Container>
+        </div>
+    );
+};
+
+export default Home;
+*/

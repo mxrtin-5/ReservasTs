@@ -6,6 +6,9 @@ import Navbar from './components/Navbar/Navbar'
 import Checkout from './components/Checkout/Checkout'
 import Opiniones from './components/Opiniones/Opiniones'
 import Graficos from './pages/Graficos/Graficos'
+import ClientesData from './components/Data/ClientesData/ClientesData'
+import ServiciosData from './components/Data/ServiciosData/ServiciosData'
+import IngresosData from './components/Data/IngresosData/IngresosData'
 
 const App: React.FC = () => {
 
@@ -21,6 +24,10 @@ const App: React.FC = () => {
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/opiniones' element={<Opiniones />} />
           <Route path='/grafico' element={<Graficos />} />
+          <Route path='/clientes' element={<ClientesData />} />
+          <Route path='/ingresos' element={<IngresosData />} />
+          <Route path='/servicios' element={<ServiciosData />} />
+
         </Routes>
       </BrowserRouter>
     </>
