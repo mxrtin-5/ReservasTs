@@ -1,0 +1,25 @@
+.graficos{
+    display: flex;
+    position: relative;
+}
+
+.main{
+    width: 10em;
+    height: 100vh;
+    background-color: rgba(33, 30, 212, 0.856) ;
+    margin: 0;
+    padding: auto;
+}
+
+.divGrafico{
+    display: grid;
+    display: flex;
+  grid-template-rows: repeat(2, 1fr); /* Dos filas para los dos gráficos, ajusta según sea necesario */
+  gap: 20px; /* Espacio entre filas */
+}
+
+.edad{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+}

@@ -1,6 +1,6 @@
-import { Button, TextField, Typography } from "@mui/material";
+import { Container, Paper, TextField, Typography } from "@mui/material";
 import { useState } from "react";
-
+import styles from './Checkout.module.css'
 
 const Checkout: React.FC = () => {
 
@@ -55,70 +55,66 @@ const Checkout: React.FC = () => {
     };
 
     return (
-        <div>
-            <Typography variant="h4" gutterBottom>
-                Checkout
-            </Typography>
+        <Container className={styles.container} maxWidth="sm">
+            <Paper elevation={3} style={{ padding: "20px", marginTop: "20px" }}>
+                <Typography variant="h4" gutterBottom>
+                    Checkout
+                </Typography>
 
-            <form>
-                <TextField
-                    label="Nombre"
-                    variant="outlined"
-                    fullWidth
-                    value={nombre}
-                    onChange={(e) => setNombre(e.target.value)}
-                    margin="normal"
-                />
+                <form>
+                    <TextField
+                        label="Nombre"
+                        variant="outlined"
+                        fullWidth
+                        value={nombre}
+                        onChange={(e) => setNombre(e.target.value)}
+                        margin="normal"
+                    />
 
-                <TextField
-                    label="Apellido"
-                    variant="outlined"
-                    fullWidth
-                    value={apellido}
-                    onChange={(e) => setApellido(e.target.value)}
-                    margin="normal"
-                />
+                    <TextField
+                        label="Apellido"
+                        variant="outlined"
+                        fullWidth
+                        value={apellido}
+                        onChange={(e) => setApellido(e.target.value)}
+                        margin="normal"
+                    />
 
-                <TextField
-                    label="Teléfono"
-                    variant="outlined"
-                    fullWidth
-                    value={telefono}
-                    onChange={(e) => setTelefono(e.target.value)}
-                    margin="normal"
-                />
+                    <TextField
+                        label="Teléfono"
+                        variant="outlined"
+                        fullWidth
+                        value={telefono}
+                        onChange={(e) => setTelefono(e.target.value)}
+                        margin="normal"
+                    />
 
-                <TextField
-                    label="Email"
-                    variant="outlined"
-                    fullWidth
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    margin="normal"
-                />
+                    <TextField
+                        label="Email"
+                        variant="outlined"
+                        fullWidth
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        margin="normal"
+                    />
 
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleCheckout}
-                    style={{ marginTop: '16px' }}
-                >
-                    Finalizar Reserva
-                </Button>
-            </form>
+                    <button
+                        className={styles.btn}
+                        onClick={handleCheckout}
+                    >
+                        Finalizar Reserva
+                    </button>
+                </form>
 
-            <div>
-                {
-                    nombre !== undefined && apellido !== undefined && telefono !== undefined && email !== undefined ? (
-                        <>
-                            <p>{`El pedido a nombre de ${nombre} ${apellido}, con el numero ${telefono} y el email ${email}, para la fecha ${userInfoString}`}</p>
-                        </>
+                <div>
+                    {nombre && apellido && telefono && email ? (
+                        <p>{`El pedido a nombre de ${nombre} ${apellido}, con el número ${telefono} y el email ${email}`}</p>
                     ) : (
                         <p>Alguno de los campos está indefinido.</p>
-                    )
-                }
-            </div>
-        </div>
+                    )}
+                </div>
+            </Paper>
+        </Container>
     );
 };
 
