@@ -30,6 +30,7 @@ interface Categoria {
     subservicios: Subservicio[];
 }
 
+//!cargar datos en db
 const serviciosData: Categoria[] = [
     {
         id: 'categoriaA',
@@ -234,6 +235,7 @@ const ServiciosData: React.FC = () => {
     const handleSubmit = (categoriaId: string, e: React.FormEvent) => {
         e.preventDefault();
         handleAgregarNuevoServicio(categoriaId);
+        //!y cargar en la db
     };
 
     return (

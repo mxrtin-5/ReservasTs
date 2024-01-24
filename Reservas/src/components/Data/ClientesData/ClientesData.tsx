@@ -25,8 +25,7 @@ const ClientesData: React.FC = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        // Aquí puedes realizar una llamada a la API para guardar los datos
-        // Por ahora, solo imprimiremos los datos en la consola
+       //!Enviar a DB
         console.log('Datos a enviar:', { nombre, edad, motivoConsulta });
 
         // Limpia el formulario después de enviar

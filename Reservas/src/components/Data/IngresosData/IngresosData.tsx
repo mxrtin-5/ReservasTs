@@ -20,7 +20,7 @@ const IngresosData: React.FC = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        // Aquí puedes realizar una llamada a la API para guardar los datos
+        //!Cargar datos en db
         // Por ahora, solo imprimiremos los datos en la consola
         console.log('Datos a enviar:', { cantidad, descripcion });
 

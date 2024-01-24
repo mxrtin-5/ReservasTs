@@ -4,6 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { Button } from "@mui/material";
 import useHorarios from "../../hooks/useHorarios";
 import { useNavigate } from "react-router-dom";
+import { useTime } from "../../hooks/useTimes";
 
 interface TimeSelectorProps {
     selectedDate: Date;
@@ -14,16 +15,16 @@ const MAX_TURNOS_POR_HORARIO = 5;
 
 const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedDate, servicio }) => {
 
-    const [selectedTime, setSelectedTime] = useState<Date | null>(null);
-
     const [turnosReservados, setTurnosReservados] = useState<{ [key: string]: number }>({});//* turnosReservados espera un objeto donde las claves son cadenas (strings) y los valores son números.
 
-    const horarios = useHorarios(servicio)
+    const horarios = useHorarios(servicio);
+
+    const { selectedTime, setSelectedTime } = useTime();
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        const getStorageKey = () => `reservas_${selectedDate.toISOString().slice(0, 10)}`;//*getStorageKey devuelve una cadena única utilizada como clave para almacenar los turnos reservados en el localStorage. La cadena generada es "reservas_" seguido de selectedDate formateada como una cadena en formato ISO 
+        const getStorageKey = () => `reservas_${selectedDate.toLocaleString().slice(0, 10)}`;//*getStorageKey devuelve una cadena única utilizada como clave para almacenar los turnos reservados en el localStorage. La cadena generada es "reservas_" seguido de selectedDate formateada como una cadena en formato ISO 
         const storedTurnosReservados = localStorage.getItem(getStorageKey());
 
         if (storedTurnosReservados) {
@@ -45,20 +46,25 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedDate, servicio }) =
     };
 
     const generateTimeOptions = () => {
-        if ( horarios.length === 0) {
+
+        if (horarios.length === 0) {
             return [];
         }
 
         const timeOptions = horarios.map((hour) => {
             const [hourPart, minutePart] = hour.split(":");
             const newDate = new Date(selectedDate);
+
+            // Set hours in the local time zone
             newDate.setHours(Number(hourPart), Number(minutePart), 0, 0);
+
             return newDate.toISOString();
+
         });
 
         return timeOptions;
-    };
 
+    };
 
     const timeOptions: string[] = generateTimeOptions();
 
@@ -67,23 +73,23 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedDate, servicio }) =
 
     const handleBooking = () => {
         if (selectedTime) {
-            const existingTurnos = turnosReservados[selectedTime.toISOString()] || 0;
+            const existingTurnos = turnosReservados[selectedTime.toLocaleString()] || 0;
 
             if (existingTurnos < MAX_TURNOS_POR_HORARIO) {
                 const updatedTurnos = {
                     ...turnosReservados,
-                    [selectedTime.toISOString()]: existingTurnos + 1,
+                    [selectedTime.toLocaleString()]: existingTurnos + 1,
                 };
 
                 // Guardar en localStorage con la versión actualizada
                 const currentDateKey = selectedTime.toISOString().slice(0, 10);
                 const getStorageKey = () => `reservas_${currentDateKey}`;
                 localStorage.setItem(getStorageKey(), JSON.stringify(updatedTurnos));
-
+                console.log(selectedTime.toLocaleString());
                 // Guardar información adicional en localStorage
                 const userInfo = {
-                    fecha: selectedDate.toISOString(),
-                    horario: selectedTime.toISOString(),
+                    fecha: selectedDate.toLocaleString(),
+                    horario: selectedTime.toLocaleString(),
                     servicio,
                 };
 

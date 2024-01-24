@@ -1,6 +1,7 @@
 import { Container, Paper, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import styles from './Checkout.module.css'
+import { useTime } from "../../hooks/useTimes";
 
 const Checkout: React.FC = () => {
 
@@ -12,20 +13,21 @@ const Checkout: React.FC = () => {
 
     const [email, setEmail] = useState<string>('');
 
+    const { selectedTime } = useTime();
 
     const checkoutStorageKey = "checkout_info";
+
     const userInfoString = localStorage.getItem(checkoutStorageKey);
 
-
-    const handleCheckout = () => {
-        // Guardar información del usuario en localStorage
+    const handleCheckout = (e: React.FormEvent) => {
+        e.preventDefault();
 
         const userInfo = {
             nombre,
             apellido,
             telefono,
             email,
-            // ... (otros datos necesarios)
+            selectedTime
         };
 
         if (userInfoString) {
@@ -38,16 +40,12 @@ const Checkout: React.FC = () => {
             console.log('Servicio Seleccionado:', userInfo.servicio);
             console.log('Horario Seleccionado:', userInfo.horario);
             console.log('Día Seleccionado:', userInfo.fecha);
-
-
-            // Puedes realizar acciones adicionales con la información del checkout, como enviarla a un servidor, etc.
         } else {
             console.error('No se encontró información de checkout en el localStorage.');
         }
 
         localStorage.setItem(checkoutStorageKey, JSON.stringify(userInfo));
 
-        // Mostrar información del usuario en la consola
         console.log('Nombre:', nombre);
         console.log('Apellido:', apellido);
         console.log('Teléfono:', telefono);

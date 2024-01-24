@@ -7,6 +7,7 @@ const Home = () => {
 
     const navigate = useNavigate();
 
+    //!cargar en la db
     const servicios = [
         {
             id: 'categoriaA',
